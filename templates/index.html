@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airbus Hackathon</title>
+    <!-- <link rel="stylesheet" type="text/css" href="static/style.css"> -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 60%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        header {
+            background: #35424a;
+            color: #ffffff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #e8491d 3px solid;
+        }
+
+        header h1 {
+            text-align: center;
+            text-transform: uppercase;
+            margin: 0;
+            font-size: 24px;
+        }
+
+        form {
+            background: #ffffff;
+            padding: 20px;
+            border: 1px #dddddd solid;
+            margin-top: 30px;
+        }
+
+        form div {
+            margin-bottom: 15px;
+        }
+
+        form label {
+            margin-bottom: 5px;
+            display: block;
+            color: #333333;
+        }
+
+        form input[type="text"],
+        form input[type="number"],
+        form select {
+            width: 100%;
+            padding: 10px;
+            border: 1px #dddddd solid;
+        }
+
+        form input[type="submit"] {
+            display: block;
+            width: 100%;
+            background: #35424a;
+            color: #ffffff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        form input[type="submit"]:hover {
+            background: #e8491d;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Flight Safety and Efficiency Prediction</h1>
+        </header>
+
+        <form action="/predict" method="POST">
+            <h2>Safety Prediction</h2>
+            <div>
+                <label for="airline">Airline</label>
+                <select id="airline" name="airline" required>
+                    <option value="IndiGo">IndiGo</option>
+                    <option value="Air India">Air India</option>
+                    <option value="Jet Airways">Jet Airways</option>
+                    <option value="SpiceJet">SpiceJet</option>
+                    <option value="GoAir">GoAir</option>
+                    <option value="Vistara">Vistara</option>
+                    <option value="Air Asia">Air Asia</option>
+                </select>
+            </div>
+            <div>
+                <label for="departure_airport">Departure Airport</label>
+                <select id="departure_airport" name="departure_airport" required>
+                    <option value="BLR ">BLR (Bengaluru)</option>
+                    <option value="BOM">BOM (Mumbai)</option>
+                    <option value="DEL">DEL (Delhi)</option>
+                    <option value="MAA">MAA (Chennai)</option>
+                    <option value="AMD">AMD (Ahmedabad)</option>
+                    <option value="JAI">JAI (Jaipur)</option>
+                </select>
+            </div>
+            <div>
+                <label for="arrival_airport">Arrival Airport</label>
+                <select id="arrival_airport" name="arrival_airport" required>
+                    <option value="IXC">IXC (Chandigarh)</option>
+                    <option value="CCU">CCU (Kolkata)</option>
+                    <option value="HYD">HYD (Hyderabad)</option>
+                    <option value="PNQ">PNQ (Pune)</option>
+                    <option value="COK">COK (Kochi)</option>
+                    <option value="BLR">BLR (Bengaluru)</option>
+                </select>
+            </div>
+            <div>
+                <label for="route_via">Route via</label>
+                <select id="route_via" name="route_via" required>
+                    <option value="DEL">DEL (Delhi)</option>
+                    <option value="HYD">HYD (Hyderabad)</option>
+                    <option value="BOM">BOM (Mumbai)</option>
+                    <option value="BLR">BLR (Bengaluru)</option>
+                </select>
+            </div>
+            <div>
+                <label for="weather">Weather</label>
+                <select id="weather" name="weather" required>
+                    <option value="Smoke">Smoke</option>
+                    <option value="Rain">Rain</option>
+                    <option value="Fog">Fog</option>
+                    <option value="Clear Skies">Clear Skies</option>
+                </select>
+            </div>
+            <div>
+                <label for="visibility">Visibility (V)</label>
+                <input type="number" id="visibility" name="visibility" step="any" required>
+            </div>
+            <div>
+                <label for="turbulence_intensity">Turbulence Intensity (TI)</label>
+                <input type="number" id="turbulence_intensity" name="turbulence_intensity" step="any" required>
+            </div>
+            <div>
+                <label for="wind_shear">Wind Shear (WS)</label>
+                <input type="number" id="wind_shear" name="wind_shear" step="any" required>
+            </div>
+            <div>
+                <label for="air_traffic_density">Air Traffic Density (ATD)</label>
+                <input type="number" id="air_traffic_density" name="air_traffic_density" step="any" required>
+            </div>
+            <div>
+                <label for="precipitation">Precipitation (P)</label>
+                <input type="number" id="precipitation" name="precipitation" step="any" required>
+            </div>
+            <div>
+                <label for="pilot_experience">Pilot Experience (PE)</label>
+                <input type="number" id="pilot_experience" name="pilot_experience" step="any" required>
+            </div>
+            <div>
+                <label for="forecast_accuracy">Weather Forecast Accuracy (FA)</label>
+                <input type="number" id="forecast_accuracy" name="forecast_accuracy" step="any" required>
+            </div>
+            <div>
+                <label for="maintenance_history">Maintenance History & Health Metrics (MH)</label>
+                <select id="maintenance_history" name="maintenance_history" required>
+                    <option value="High">High</option>
+                    <option value="Moderate">Moderate</option>
+                </select>
+            </div>
+
+            <h2>Efficiency Prediction</h2>
+            <div>
+                <label for="fuel_consumption">Fuel Consumption (W=6) kg/100km</label>
+                <input type="number" id="fuel_consumption" name="fuel_consumption" step="any" required>
+            </div>
+            <div>
+                <label for="air_traffic_congestion">Air Traffic Congestion (W=4)</label>
+                <input type="number" id="air_traffic_congestion" name="air_traffic_congestion" step="any" required>
+            </div>
+            <div>
+                <label for="no_step_climbs">No. Step Climbs (W=5)</label>
+                <input type="number" id="no_step_climbs" name="no_step_climbs" step="any" required>
+            </div>
+            <div>
+                <label for="aircraft_load_factor">Aircraft Load Factor (W=4) %age</label>
+                <input type="number" id="aircraft_load_factor" name="aircraft_load_factor" step="any" required>
+            </div>
+            <div>
+                <label for="projected_flight_time">Projected Flight Time (W=5)</label>
+                <input type="number" id="projected_flight_time" name="projected_flight_time" step="any" required>
+            </div>
+            <div>
+                <label for="maintenance_status">Maintenance Status (W=3)</label>
+                <input type="number" id="maintenance_status" name="maintenance_status" step="any" required>
+            </div>
+            <div>
+                <input type="submit" value="Predict Safety and Efficiency Scores">
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

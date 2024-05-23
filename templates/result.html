@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .result-container {
+            background: #ffffff;
+            padding: 20px 30px;
+            border: 1px solid #dddddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            text-align: left;
+        }
+
+        .result-container h1 {
+            background: #35424a;
+            color: #ffffff;
+            padding: 15px;
+            margin: -30px -30px 20px -30px;
+            border-bottom: #e8491d 3px solid;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            text-align: center;
+        }
+
+        .result-container p {
+            font-size: 18px;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        .result-container p strong {
+            color: #e8491d;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="result-container">
+        <h1>Result</h1>
+        <p><strong>Airline:</strong> {{ route['airline'] }}</p>
+        <p><strong>Departure Airport:</strong> {{ route['departure_airport'] }}</p>
+        <p><strong>Arrival Airport:</strong> {{ route['arrival_airport'] }}</p>
+        <p><strong>Route via:</strong> {{ route['route_via'] }}</p>
+        <p><strong>Safety Score:</strong> {{ safety_score }}</p>
+        <p><strong>Efficiency Score:</strong> {{ efficiency_score }}</p>
+        <p><strong>Combined Score:</strong> {{ combined_score }}</p>
+    </div>
+</body>
+
+</html>
