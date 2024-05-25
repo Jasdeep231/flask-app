@@ -93,8 +93,8 @@ warnings.filterwarnings("ignore", category=UserWarning, module="sklearn")
 
 app = Flask(__name__)
 # Set up CORS to allow requests from your frontend
-# CORS(app, resources={r"/predict": {"origins": "https://flight-route.vercel.app"}})
-CORS(app, resources={r"/predict": {"origins": "http://localhost:3000"}})
+CORS(app, resources={r"/predict": {"origins": "https://flight-route.vercel.app"}})
+# CORS(app, resources={r"/predict": {"origins": "http://localhost:3000"}})
 
 # Load the trained models and encoders for the safety model
 rf_model_safety = joblib.load('model.pkl')
